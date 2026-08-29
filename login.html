@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from veoframe.com/login.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Aug 2026 06:46:08 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign in · VEO Frame</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · FrameFlux</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/stylec115.css?v=1785402467">
-<script src="../challenges.cloudflare.com/turnstile/v0/b/e694063b5082/api.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/b/e694063b5082/api.js" async defer></script>
 </head>
 <body>
 <div class="auth-split">
     <div class="auth-brand">
-        <a href="index.html" class="brand" style="text-decoration:none;color:var(--text)"><span class="brand-mark">F</span> <span>VEO Frame</span></a>
+        <a href="index.html" class="brand" style="text-decoration:none;color:var(--text);display:inline-flex;align-items:center;">
+            <span class="brand-mark" style="background:transparent; border:none; padding:0; display:inline-flex; align-items:center; width:auto; height:auto; margin-right:8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="6" stroke="#22c55e" stroke-width="2.5" fill="none"/>
+                    <path d="M9.5 8L16.5 12L9.5 16V8Z" fill="#22c55e"/>
+                    <path d="M16 5.5L17.5 4M19 7L20.5 5.5M5.5 16L4 17.5" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </span>
+            <span>FrameFlux</span>
+        </a>
         <h2 style="margin-top:40px">Welcome back to your studio.</h2>
         <p>Log in to continue where you left off. Your gallery, subscription, and tickets are waiting.</p>
         <div class="auth-marks">
@@ -26,24 +33,33 @@
     <div class="auth-form">
         <h2>Sign in</h2>
         <p class="muted mt-0" style="margin-bottom:24px">Enter your credentials to access your workspace.</p>
-                            <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=305588853319-qlfvm28eglca324o6lr0ke28d8bj03b2.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Fveoframe.com%2Fauth%2Fgoogle-callback.php&amp;response_type=code&amp;scope=openid+email+profile&amp;state=b62626232af21bbdeaa2def3171e0881&amp;access_type=online&amp;prompt=select_account" class="btn btn-google btn-block">
-                <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-                Continue with Google
-            </a>
-            <div class="auth-divider"><span>or</span></div>
-                <form method="post" class="stack">
-            <input type="hidden" name="_csrf" value="466209b7014dd8e8d2b5d98246b34c7abd5a54d82752cd40">            <div>
+        
+        <a href="auth/google.php" class="btn btn-google btn-block">
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            Continue with Google
+        </a>
+        
+        <div class="auth-divider"><span>or</span></div>
+        
+        <form method="post" action="login.php" class="stack">
+            <div>
                 <label>Email</label>
-                <input type="email" name="email" value="" required autofocus>
+                <input type="email" name="email" value="" required autofocus placeholder="name@example.com">
             </div>
             <div>
                 <div class="row between" style="margin-bottom:6px">
                     <label style="margin:0">Password</label>
                     <a class="link" href="forgot-password.html" style="font-size:.82rem">Forgot password?</a>
                 </div>
-                <input type="password" name="password" required>
+                <input type="password" name="password" required placeholder="••••••••">
             </div>
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEB5sDG3_kG6Wss4" style="margin-bottom:12px"></div>            <button class="btn btn-primary btn-block mt-2">Sign in</button>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEB5sDG3_kG6Wss4" style="margin-bottom:12px"></div>
+            <button class="btn btn-primary btn-block mt-2" type="submit">Sign in</button>
         </form>
         <p class="muted mt-3" style="text-align:center">
             No account yet? <a class="link" href="register.html">Create one — free</a>
@@ -51,6 +67,4 @@
     </div>
 </div>
 </body>
-
-<!-- Mirrored from veoframe.com/login.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Aug 2026 06:46:08 GMT -->
 </html>
