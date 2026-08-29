@@ -355,6 +355,30 @@
             No card required · Upgrade to Pro from just Rs 499
         </p>
 
+        <!-- LIVE STUDIO GENERATOR BOX (HERE IS THE INTEGRATED STUDIO BOX) -->
+        <div class="studio-card" style="padding: 30px; background: rgba(17,17,17,0.9); border-radius: 18px; border: 1px solid rgba(34,197,94,0.3); max-width: 700px; margin: 40px auto; text-align: left;">
+            <h3 style="color:#22c55e; margin-top:0;">FrameFlux Studio Generator</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="color:#fff; display:block; margin-bottom:5px;">Generation Mode:</label>
+                <select id="genType" style="padding: 10px; border-radius: 8px; background: #111; color: #fff; border: 1px solid #333; width: 100%;">
+                    <option value="image">Image Generation (FLUX.1 Schnell)</option>
+                    <option value="video">Video Generation (Luma AI)</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="color:#fff; display:block; margin-bottom:5px;">Prompt:</label>
+                <textarea id="promptInput" rows="3" style="width:100%; padding: 12px; border-radius: 8px; background:#000; color:#fff; border:1px solid #22c55e;" placeholder="Describe your visual concept..."></textarea>
+            </div>
+
+            <button id="generateBtn" onclick="runFrameFluxAI()" class="btn btn-primary btn-glow" style="width:100%; padding: 12px; border-radius: 10px; font-weight: 600;">
+                Generate Visual ⚡
+            </button>
+
+            <div id="resultBox" style="margin-top: 20px; text-align: center;"></div>
+        </div>
+
         <div class="mockup-container" style="max-width: 900px; margin: 60px auto 0; position: relative; z-index: 2;">
             <div style="background: rgba(17, 17, 17, 0.8); border: 1px solid rgba(34, 197, 94, 0.25); border-radius: 16px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(34, 197, 94, 0.15);">
                 <div style="background: rgba(10, 10, 10, 0.9); padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
@@ -607,6 +631,7 @@
     </div>
 </section>
 
+<!-- BACKGROUND ANIMATION CANVAS SCRIPT -->
 <script>
 (function() {
     const canvas = document.getElementById('dotCanvas');
@@ -731,6 +756,60 @@
 })();
 </script>
 
+<!-- REPLICATE API INTEGRATION SCRIPT (PASTED BEFORE CLOSING BODY TAG) -->
+<script>
+async function runFrameFluxAI() {
+    const prompt = document.getElementById('promptInput').value;
+    const type = document.getElementById('genType').value;
+    const btn = document.getElementById('generateBtn');
+    const resultBox = document.getElementById('resultBox');
+
+    if (!prompt.trim()) {
+        alert('Please enter a prompt first!');
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Rendering with FrameFlux AI... ⏳";
+    resultBox.innerHTML = "<p style='color:#22c55e;'>Generating your content... Please wait 10-30 seconds.</p>";
+
+    try {
+        const response = await fetch('generate.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                type: type
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            if (data.type === 'video') {
+                resultBox.innerHTML = `
+                    <video controls autoplay loop style="max-width:100%; border-radius:12px; border:1px solid #22c55e; margin-top:15px;">
+                        <source src="${data.output}" type="video/mp4">
+                    </video>`;
+            } else {
+                resultBox.innerHTML = `
+                    <img src="${data.output[0]}" alt="AI Output" style="max-width:100%; border-radius:12px; border:1px solid #22c55e; margin-top:15px;">`;
+            }
+        } else {
+            resultBox.innerHTML = `<p style="color:#ef4444;">Error: ${data.error}</p>`;
+        }
+    } catch (err) {
+        console.error(err);
+        resultBox.innerHTML = `<p style="color:#ef4444;">Server connection error!</p>`;
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "Generate Visual ⚡";
+    }
+}
+</script>
+
 <footer class="site-foot">
     <div>© 2026 FrameFlux · All rights reserved</div>
     <div>
@@ -743,27 +822,5 @@
     </div>
 </footer>
 <script src="assets/js/app1205.js?v=1787153472"></script>
-<div class="studio-card" style="padding: 30px; background: rgba(17,17,17,0.9); border-radius: 18px; border: 1px solid rgba(34,197,94,0.3); max-width: 700px; margin: 40px auto; text-align: left;">
-    <h3 style="color:#22c55e; margin-top:0;">FrameFlux Studio Generator</h3>
-    
-    <div style="margin-bottom: 15px;">
-        <label style="color:#fff; display:block; margin-bottom:5px;">Generation Mode:</label>
-        <select id="genType" style="padding: 10px; border-radius: 8px; background: #111; color: #fff; border: 1px solid #333; width: 100%;">
-            <option value="image">Image Generation (FLUX.1 Schnell)</option>
-            <option value="video">Video Generation (Luma AI)</option>
-        </select>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label style="color:#fff; display:block; margin-bottom:5px;">Prompt:</label>
-        <textarea id="promptInput" rows="3" style="width:100%; padding: 12px; border-radius: 8px; background:#000; color:#fff; border:1px solid #22c55e;" placeholder="Describe your visual concept..."></textarea>
-    </div>
-
-    <button id="generateBtn" onclick="runFrameFluxAI()" class="btn btn-primary btn-glow" style="width:100%; padding: 12px; border-radius: 10px; font-weight: 600;">
-        Generate Visual ⚡
-    </button>
-
-    <div id="resultBox" style="margin-top: 20px; text-align: center;"></div>
-</div>
 </body>
 </html>
