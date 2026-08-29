@@ -743,5 +743,27 @@
     </div>
 </footer>
 <script src="assets/js/app1205.js?v=1787153472"></script>
+<div class="studio-card" style="padding: 30px; background: rgba(17,17,17,0.9); border-radius: 18px; border: 1px solid rgba(34,197,94,0.3); max-width: 700px; margin: 40px auto; text-align: left;">
+    <h3 style="color:#22c55e; margin-top:0;">FrameFlux Studio Generator</h3>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="color:#fff; display:block; margin-bottom:5px;">Generation Mode:</label>
+        <select id="genType" style="padding: 10px; border-radius: 8px; background: #111; color: #fff; border: 1px solid #333; width: 100%;">
+            <option value="image">Image Generation (FLUX.1 Schnell)</option>
+            <option value="video">Video Generation (Luma AI)</option>
+        </select>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label style="color:#fff; display:block; margin-bottom:5px;">Prompt:</label>
+        <textarea id="promptInput" rows="3" style="width:100%; padding: 12px; border-radius: 8px; background:#000; color:#fff; border:1px solid #22c55e;" placeholder="Describe your visual concept..."></textarea>
+    </div>
+
+    <button id="generateBtn" onclick="runFrameFluxAI()" class="btn btn-primary btn-glow" style="width:100%; padding: 12px; border-radius: 10px; font-weight: 600;">
+        Generate Visual ⚡
+    </button>
+
+    <div id="resultBox" style="margin-top: 20px; text-align: center;"></div>
+</div>
 </body>
 </html>
